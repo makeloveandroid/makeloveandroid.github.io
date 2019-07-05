@@ -153,24 +153,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>@<a href="V2签名分析">TOC</a></p>
-<h2 id="简单过一下V1签名多渠道方案"><a href="#简单过一下V1签名多渠道方案" class="headerlink" title="简单过一下V1签名多渠道方案"></a>简单过一下V1签名多渠道方案</h2><h4 id="V1签名原理"><a href="#V1签名原理" class="headerlink" title="V1签名原理"></a>V1签名原理</h4><p>v1 签名方案重要的原理就是对 apk 中所有的文件计算摘要 保存到 MANIFEST.MF 文件中；然后计算 MANIFEST.MF 中每个条目的摘要以及 MANIFEST.MF 本身的摘要，保存到 CERT.SF 文件中；最后用私钥对 CERT.SF 文件加密，然后保存到 CERT.RSA 文件中（这个文件还包含了签名算法、公钥信息）</p>
-<p>(1) .MF文件</p>
-<p>apk当中的原始文件信息用摘要算法如SHA1计算得到的摘要信息并用base64编码保存，以及对应采用的摘要算法如SHA1(这个算法的特性是不管多大的文件内容都能够得到长度相同的摘要信息但是不同的文件内容信息得到的摘要信息肯定不同)</p>
-<p>(2) .SF文件</p>
-<p>.MF文件的摘要信息以及.MF文件当中每个条目在用摘要算法计算得到的摘要信息并用base64编码保存</p>
-<p>(3) .RSA文件</p>
-<p>存放证书信息，公钥信息，以及用私钥对.SF文件的加密数据即签名信息，这段数据是无法伪造的，除非有私钥，另外.RSA文件还记录了所用的签名算法等信息。</p>
-<p>Apk包在安装的时候，是按照从(3)到(1)的顺序依次校验的，先用公钥还原签名信息，然后和.SF文件中的信息比对，然后用同样的摘要算法对.MF文件里面的每一个条目计算对应的摘要信息，然后比对.MF文件是否一致</p>
-<h4 id="V1多渠道方案（1）"><a href="#V1多渠道方案（1）" class="headerlink" title="V1多渠道方案（1）"></a>V1多渠道方案（1）</h4><p>==向META-INF目录中创建文件写入渠道信息==，因为在v1签名验证时候，并不会验证META-INF的除了.MF文件的其它文件</p>
-<h4 id="V1多渠道方案（2）"><a href="#V1多渠道方案（2）" class="headerlink" title="V1多渠道方案（2）"></a>V1多渠道方案（2）</h4><p>==在APK的任意位置填写空文件夹（注意是空文件夹）==，在apk签名过程中，只会对apk中的所有文件进行摘要+签名的，不会对文件夹进行这样的操作（文件夹无法计算摘要），所以也不会验证这个文件夹</p>
-<h4 id="V1多渠道方案（3）"><a href="#V1多渠道方案（3）" class="headerlink" title="V1多渠道方案（3）"></a>V1多渠道方案（3）</h4><p>这个就要了解下APK结构（其实就是ZIP的结构）了，看下面的图<br><img src="https://img-blog.csdnimg.cn/20190313175433726.png" alt="在这里插入图片描述"><br>从图中我们能看出，有一个End of Central Directory的数据块，这块是什么呢？其实这块就是结尾信息，里面记录了部分信息，==简称EOCD==<br><img src="https://img-blog.csdn.net/20180418223025584?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xtajYyMzU2NTc5MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="在这里插入图片描述"><br>我们主要看最后有一个注释长度的标识，那我们是不是可以通过这个加入渠道呢？当然可以，这个只是zip文件的一个注释字段，所以并不影响ZIP里面的文件，所以更不会影响APK的签名，Apk安装的前提是要把Zip解压，在进行验签名等过程，所以想要多渠道修改APK第一点就是保证Zip结构的正确，第二点才是不违背签名</p>
+<h2 id="简单过一下V1签名多渠道方案"><a href="#简单过一下V1签名多渠道方案" class="headerlink" title="简单过一下V1签名多渠道方案"></a>简单过一下V1签名多渠道方案</h2><h4 id="V1签名原理"><a href="#V1签名原理" class="headerlink" title="V1签名原理"></a>V1签名原理</h4><p>v1 签名方案重要的原理就是对 apk 中所有的文件计算摘要 保存到 MANIFEST.MF 文件中；然后计算 MANIFEST.MF 中每个条目的摘要以及 MANIFEST.MF 本身的摘要，保存到 CERT.SF 文件中；最后用私钥对 CERT.SF 文件加密，然后保存到 CERT.RSA 文件中（这个文件还包含了签名算法、公钥信息）<br>
         
           <a class="article-more-a" href="/2019/03/14/V2多渠道打包分析丶工具开发/#more">more >></a>
         
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -240,22 +230,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>@<a href="很皮微信">TOC</a></p>
-<h1 id="git地址"><a href="#git地址" class="headerlink" title="git地址"></a>git地址</h1><p><a href="https://github.com/makeloveandroid/NaughtyWeCaht/releases/tag/1.0" target="_blank" rel="noopener">应用下载地址</a></p>
-<h1 id="应用展示"><a href="#应用展示" class="headerlink" title="应用展示"></a>应用展示</h1><p><img src="https://img-blog.csdnimg.cn/20190308161034201.gif" alt="在这里插入图片描述"></p>
-<h1 id="前景"><a href="#前景" class="headerlink" title="前景"></a>前景</h1><p>曾经一直想做一款关于微信的软件,目标就是网上收集很多调皮捣蛋的语音或者录音变声,然后发送给某个微信好友,感觉很有意思</p>
-<h2 id="开发遇到的难题"><a href="#开发遇到的难题" class="headerlink" title="开发遇到的难题"></a>开发遇到的难题</h2><ol>
-<li>收集很多好玩的语音素材</li>
-<li>录制的音频如何变声</li>
-<li>音频格式转换,微信只支持发送amr格式的音频文件</li>
-<li>如何才能调用微信的发送音频代码</li>
-<li><p>微信版本升级,如何做到我的软件热更新</p>
+<h1 id="git地址"><a href="#git地址" class="headerlink" title="git地址"></a>git地址</h1><p><a href="https://github.com/makeloveandroid/NaughtyWeCaht/releases/tag/1.0" target="_blank" rel="noopener">应用下载地址</a><br>
         
           <a class="article-more-a" href="/2019/02/14/微信发送自定义语音/#more">more >></a>
         
       
 
       
-    </li></ol></div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
