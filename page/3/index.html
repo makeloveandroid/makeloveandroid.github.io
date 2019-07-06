@@ -132,6 +132,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Retrofit自动定义ConverterFactory" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/28/Retrofit自动定义ConverterFactory/">Retrofit自动定义ConverterFactory</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/28/Retrofit自动定义ConverterFactory/" class="archive-article-date">
+  	<time datetime="2018-05-28T05:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>先来一段我们经常写的代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">createRetrofit</span><span class="params">()</span></span>&#123;</span><br><span class="line">    retrofit = <span class="keyword">new</span> Retrofit.Builder()</span><br><span class="line">            .baseUrl(BASE_URL)</span><br><span class="line">            .client(getHttpClient(getAppIntercepter(),getCache(App.getAppContext())))</span><br><span class="line">            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())</span><br><span class="line">            .addConverterFactory(GsonConverterFactory.create())</span><br><span class="line">            .build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+        
+          <a class="article-more-a" href="/2018/05/28/Retrofit自动定义ConverterFactory/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/28/Retrofit自动定义ConverterFactory/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-javapoet动态生成java代码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

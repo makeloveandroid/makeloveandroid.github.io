@@ -6,15 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>快乐编码</title>
+  <title>使用OkHttp拦截器,添加统一参数 | 快乐编码</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="快乐编码">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="场景 大家的应用处于安全考虑,又没有加密呢?又没用一个一个加密参数做验证呢?如果没有那你们就太low了(当然对于懂逆向的这些都没啥用处),如果有你是如何做的呢? 为何做验证 处于安全考虑,http请求都是可以通过抓包工具抓取下来的(Fiddler),抓取下来,我就可以通过模拟请求发送你们的请求,做一款外挂,大伙也可以试试,抓别人的包,然后请求即可…,一般来说如何做呢?就是对一个参数经过一系列算法,">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用OkHttp拦截器,添加统一参数">
+<meta property="og:url" content="http://yoursite.com/2018/05/30/使用OkHttp拦截器,添加统一参数/index.html">
 <meta property="og:site_name" content="快乐编码">
+<meta property="og:description" content="场景 大家的应用处于安全考虑,又没有加密呢?又没用一个一个加密参数做验证呢?如果没有那你们就太low了(当然对于懂逆向的这些都没啥用处),如果有你是如何做的呢? 为何做验证 处于安全考虑,http请求都是可以通过抓包工具抓取下来的(Fiddler),抓取下来,我就可以通过模拟请求发送你们的请求,做一款外挂,大伙也可以试试,抓别人的包,然后请求即可…,一般来说如何做呢?就是对一个参数经过一系列算法,">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://img-blog.csdn.net/20180530152428654">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==">
+<meta property="og:updated_time" content="2019-07-06T02:39:36.636Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快乐编码">
+<meta name="twitter:title" content="使用OkHttp拦截器,添加统一参数">
+<meta name="twitter:description" content="场景 大家的应用处于安全考虑,又没有加密呢?又没用一个一个加密参数做验证呢?如果没有那你们就太low了(当然对于懂逆向的这些都没啥用处),如果有你是如何做的呢? 为何做验证 处于安全考虑,http请求都是可以通过抓包工具抓取下来的(Fiddler),抓取下来,我就可以通过模拟请求发送你们的请求,做一款外挂,大伙也可以试试,抓别人的包,然后请求即可…,一般来说如何做呢?就是对一个参数经过一系列算法,">
+<meta name="twitter:image" content="https://img-blog.csdn.net/20180530152428654">
   
   
     <link rel="icon" href="/favicon.png">
@@ -130,722 +142,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-jenkins打包之git选择分支和自定义参数(4)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-使用OkHttp拦截器,添加统一参数" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/02/jenkins打包之git选择分支和自定义参数(4)/">jenkins打包之git选择分支和自定义参数(4)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/02/jenkins打包之git选择分支和自定义参数(4)/" class="archive-article-date">
-  	<time datetime="2018-07-02T06:59:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>配置git选择分支</p>
-<p><img src="https://img-blog.csdn.net/20180702142722860?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlbnlpbmd6aGk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>1:安装Git Parameter插件,jenkins的系统管理-&gt;插件管理,进行搜索安装\</p>
-        
-          <a class="article-more-a" href="/2018/07/02/jenkins打包之git选择分支和自定义参数(4)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/02/jenkins打包之git选择分支和自定义参数(4)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jenkins打包之创建项目完成打包(3)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/jenkins打包之创建项目完成打包(3)/">jenkins打包之创建项目完成打包(3)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/25/jenkins打包之创建项目完成打包(3)/" class="archive-article-date">
-  	<time datetime="2018-06-25T07:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>新建任务</p>
-<p><img src="https://img-blog.csdn.net/20180625144800926?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlbnlpbmd6aGk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p><img src="https://img-blog.csdn.net/20180625144907480?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlbnlpbmd6aGk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img">
-        
-          <a class="article-more-a" href="/2018/06/25/jenkins打包之创建项目完成打包(3)/#more">more >></a>
-        
-      
-
-      
-    </p></div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/25/jenkins打包之创建项目完成打包(3)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jenkins打包之创建项目完成打包(2)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/jenkins打包之创建项目完成打包(2)/">jenkins打包之创建项目完成打包(2)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/25/jenkins打包之创建项目完成打包(2)/" class="archive-article-date">
-  	<time datetime="2018-06-25T06:32:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>前面的创建账号和安装插件就跳过了</p>
-<p><strong>进入系统管理</strong></p>
-<p><strong><img src="https://img-blog.csdn.net/20180625142532263?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlbnlpbmd6aGk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></strong></p>
-        
-          <a class="article-more-a" href="/2018/06/25/jenkins打包之创建项目完成打包(2)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/25/jenkins打包之创建项目完成打包(2)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jenkins打包之环境搭建(1)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/25/jenkins打包之环境搭建(1)/">jenkins打包之环境搭建(1)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/25/jenkins打包之环境搭建(1)/" class="archive-article-date">
-  	<time datetime="2018-06-25T02:39:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前介"><a href="#前介" class="headerlink" title="前介"></a>前介</h1><p>​    大家有没有遇到这样的事情,测试总是和你说,你帮我打一个最新版版的安装包,说实话很烦,我第一家公司就遇到了这个问题,我们总是不耐其烦的给其打包,公司的确挺low,也不想着用用工具,那会解决方法是,让测试安装了gradle环境和git环境,自己从git上拉取代码,让其自己输入命令assembleRelease进行打包,到了新公司,发现个好东西Jenkins,很好玩,自己选择条件就能打指定包了,所以在兴趣的趋势下,我玩了玩!!</p>
-<p>先晒一晒我们公司的jenkins</p>
-        
-          <a class="article-more-a" href="/2018/06/25/jenkins打包之环境搭建(1)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/25/jenkins打包之环境搭建(1)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-(3)自定义推送库-TCP协议核心封包拆包" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/14/(3)自定义推送库-TCP协议核心封包拆包/">(3)自定义推送库-TCP协议核心封包拆包</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/14/(3)自定义推送库-TCP协议核心封包拆包/" class="archive-article-date">
-  	<time datetime="2018-06-14T09:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h1><p>​     正常推送,客户端连接服务端正常,推送Toast丶通知丶图片</p>
-<p><img src="https://img-blog.csdn.net/20180614165807583" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-<p>离线推送,客户端连接服务端断开,推送Toast丶通知丶图片,等待用户连接后立刻推送消息</p>
-<p><img src="https://img-blog.csdn.net/20180614165917113" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-        
-          <a class="article-more-a" href="/2018/06/14/(3)自定义推送库-TCP协议核心封包拆包/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/14/(3)自定义推送库-TCP协议核心封包拆包/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-(2)自定义推送库-集成方式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/13/(2)自定义推送库-集成方式/">(2)自定义推送库-集成方式</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/13/(2)自定义推送库-集成方式/" class="archive-article-date">
-  	<time datetime="2018-06-13T03:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="集成方式"><a href="#集成方式" class="headerlink" title="集成方式"></a>集成方式</h1><ol>
-<li>依赖push library</li>
-<li>项目工程Application继承PushApp</li>
-<li>开启推送</li>
-<li>设置推送监听</li>
-</ol>
-<h1 id="开启推送"><a href="#开启推送" class="headerlink" title="开启推送"></a>开启推送</h1><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">public void startPush(View view) &#123;</span><br><span class="line">    AwenPushManager pushManager = new AwenPushManager.Build()</span><br><span class="line">            // TODO: 2018/6/12 注意这里,只是为了效果方便,卸载activity里面,这样写会导致activity内存泄露,最好还是在服务中开启</span><br><span class="line">            .setOnPushListener(this) // 设置推送回调</span><br><span class="line">            .settingSerice("172.18.0.159", 8800)</span><br><span class="line">            .build(getApplication());</span><br><span class="line">    // 开启接收推送</span><br><span class="line">    pushManager.startPush();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-        
-          <a class="article-more-a" href="/2018/06/13/(2)自定义推送库-集成方式/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/13/(2)自定义推送库-集成方式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-(1)自定义推送库-需要解决的难题方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/12/(1)自定义推送库-需要解决的难题方案/">(1)自定义推送库-需要解决的难题方案</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/12/(1)自定义推送库-需要解决的难题方案/" class="archive-article-date">
-  	<time datetime="2018-06-12T10:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>前言</strong></p>
-<blockquote>
-<p>闲的无聊用TCP协议封装一个推送库玩玩,主要是想通过推送掌握TCP协议的封包+拆包的逻辑,以及常用的业务功能设计方案,通过推送可以了解大部分的即时通讯的业务逻辑</p>
-</blockquote>
-        
-          <a class="article-more-a" href="/2018/06/12/(1)自定义推送库-需要解决的难题方案/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/12/(1)自定义推送库-需要解决的难题方案/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-性能优化之布局优化(ConstraintLayout)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/06/性能优化之布局优化(ConstraintLayout)/">性能优化之布局优化(ConstraintLayout)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/06/性能优化之布局优化(ConstraintLayout)/" class="archive-article-date">
-  	<time datetime="2018-06-06T02:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>遇到的问题</p>
-<p>面试的时候,面试官总问我做过性能优化吗?我这种低级程序员当然会说一些基本的防止给自己的挖坑,例如布局优化啊,减少覆盖渲染呀啥的,我经常说不要包裹过多的布局,因为在xml生成view对象的也是需要解析xml解析效率降低,渲染view的层级过多都会导致性能降低,都是屁话,总之就是降低xml布局的层级关系,怎么降低呢?今天我学习了下ConstraintLayout,发现他很强大,他几乎可以包裹一层即可完成复杂的布局</p>
-        
-          <a class="article-more-a" href="/2018/06/06/性能优化之布局优化(ConstraintLayout)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/06/性能优化之布局优化(ConstraintLayout)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-关于Rxjava+Retrofit网络请求防止内存泄露" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/06/01/关于Rxjava+Retrofit网络请求防止内存泄露/">关于Rxjava+Retrofit网络请求防止内存泄露</a>
-    </h1>
-  
-
-        
-        <a href="/2018/06/01/关于Rxjava+Retrofit网络请求防止内存泄露/" class="archive-article-date">
-  	<time datetime="2018-06-01T03:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>简介</p>
-<p>不知道大家有没有碰到这个问题,在一个Activcity正在加载数据,网络请求还未完毕,此时用户将Activity关闭了,这时候就造成了内存泄露(为啥泄露自己想),Activity并没有被释放的,这时候网络请求完了,回调了请求成功方法,填充view就开始报null异常了…,不知道大家有没有遇到这个问题?在以前网络请求发起是很难取消掉的,我们是在onSuccess回调加了判断Activity是否被销毁掉,在进行填充view</p>
-        
-          <a class="article-more-a" href="/2018/06/01/关于Rxjava+Retrofit网络请求防止内存泄露/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/06/01/关于Rxjava+Retrofit网络请求防止内存泄露/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-使用OkHttp拦截器,添加统一参数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/30/使用OkHttp拦截器,添加统一参数/">使用OkHttp拦截器,添加统一参数</a>
+    <h1 class="article-title" itemprop="name">
+      使用OkHttp拦截器,添加统一参数
     </h1>
   
 
@@ -862,11 +166,49 @@
 <p>大家的应用处于安全考虑,又没有加密呢?又没用一个一个加密参数做验证呢?如果没有那你们就太low了(当然对于懂逆向的这些都没啥用处),如果有你是如何做的呢?</p>
 <p>为何做验证</p>
 <p>处于安全考虑,http请求都是可以通过抓包工具抓取下来的(Fiddler),抓取下来,我就可以通过模拟请求发送你们的请求,做一款外挂,大伙也可以试试,抓别人的包,然后请求即可…,一般来说如何做呢?就是对一个参数经过一系列算法,然后服务端口回去验证此算法是否正确</p>
-        
-          <a class="article-more-a" href="/2018/05/30/使用OkHttp拦截器,添加统一参数/#more">more >></a>
-        
+ <a id="more"></a>
+<p>流程图</p>
+<p><img src="https://img-blog.csdn.net/20180530152428654" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>实现逻辑</p>
+<p>通过okhttp的拦截器,拦截请求体,对请求体做对应添加数据</p>
+<p>所有请求添加请求头拦截器定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Interceptor <span class="title">getHeaderIntercepter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">new</span> Interceptor() &#123;</span><br><span class="line">         <span class="meta">@Override</span></span><br><span class="line">         <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">             Request request = chain.request();</span><br><span class="line">             request=request.newBuilder()</span><br><span class="line">                     .addHeader(<span class="string">"myHeader"</span>, <span class="string">"ok"</span>)</span><br><span class="line">                     .addHeader(<span class="string">"myHeader"</span>, <span class="string">"ok2"</span>)</span><br><span class="line">                     .build();</span><br><span class="line">             Response response = chain.proceed(request);</span><br><span class="line">             <span class="keyword">return</span> response;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>From表单添加所有参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Interceptor <span class="title">getFromIntercepter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> Interceptor() &#123;</span><br><span class="line">           <span class="meta">@Override</span></span><br><span class="line">           <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">               Request request = chain.request();</span><br><span class="line">               <span class="comment">//参数就要针对body做操作,我这里针对From表单做操作</span></span><br><span class="line">               <span class="keyword">if</span> (request.body() <span class="keyword">instanceof</span> FormBody) &#123;</span><br><span class="line">                   <span class="comment">// 构造新的请求表单</span></span><br><span class="line">                   FormBody.Builder builder = <span class="keyword">new</span> FormBody.Builder();</span><br><span class="line"></span><br><span class="line">                   FormBody body = (FormBody) request.body();</span><br><span class="line">                   <span class="comment">//将以前的参数添加</span></span><br><span class="line">                   <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; body.size(); i++) &#123;</span><br><span class="line">                       builder.add(body.encodedName(i), body.encodedValue(i));</span><br><span class="line">                   &#125;</span><br><span class="line">                   <span class="comment">//追加新的参数</span></span><br><span class="line">                   builder.add(<span class="string">"newKye"</span>, <span class="string">"newValue"</span>);</span><br><span class="line">                   request = request.newBuilder().post(builder.build()).build();<span class="comment">//构造新的请求体</span></span><br><span class="line">               &#125;</span><br><span class="line"></span><br><span class="line">               Response response = chain.proceed(request);</span><br><span class="line">               <span class="keyword">return</span> response;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>GET请求追加参数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Interceptor <span class="title">getGetParameterIntercepter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Interceptor() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">            Request request = chain.request();</span><br><span class="line">            <span class="keyword">if</span> (request.method().equals(<span class="string">"GET"</span>)) &#123;</span><br><span class="line">                <span class="comment">//如果是get请求</span></span><br><span class="line">                HttpUrl url = request.url();</span><br><span class="line">                HttpUrl newUrl = url.newBuilder()</span><br><span class="line">                        .addEncodedQueryParameter(<span class="string">"newKey"</span>, <span class="string">"newValue"</span>)</span><br><span class="line">                        .addEncodedQueryParameter(<span class="string">"newKey2"</span>, <span class="string">"newvalue2"</span>)</span><br><span class="line">                        .build();</span><br><span class="line">                request = request.newBuilder()</span><br><span class="line">                                    .url(newUrl).build();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            Response response = chain.proceed(request);</span><br><span class="line">            <span class="keyword">return</span> response;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>万能请求加参数方法(例如JSON的post请求)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> Interceptor <span class="title">getAddPIntercepter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Interceptor() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> Response <span class="title">intercept</span><span class="params">(Chain chain)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">            Request request = chain.request();</span><br><span class="line">            RequestBody body = request.body();<span class="comment">// 得到请求体</span></span><br><span class="line">            Buffer buffer = <span class="keyword">new</span> Buffer();<span class="comment">// 创建缓存</span></span><br><span class="line">            body.writeTo(buffer);<span class="comment">//将请求体内容,写入缓存</span></span><br><span class="line">            String parameterStr = buffer.readUtf8();<span class="comment">// 读取参数字符串</span></span><br><span class="line">            <span class="comment">//如果是json串就解析 从新加餐 如果是字符串就进行修改 具体业务逻辑自己加</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//对应请求头大伙按照自己的传输方式 定义</span></span><br><span class="line">            RequestBody requestBody = RequestBody.create(MediaType.parse(<span class="string">"text/x-markdown; charset=utf-8"</span>), parameterStr);</span><br><span class="line">            request = request.newBuilder().patch(requestBody).build();</span><br><span class="line"></span><br><span class="line">            Response response = chain.proceed(request);</span><br><span class="line">            <span class="keyword">return</span> response;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
+<p>总结</p>
+<p>关于修改参数,可以从okhttp的拦截器做处理,也可以从Retrofit层做处理,如果是Retrofit层可以通过,自定义ConverterFactory,对请求数据转换,不嫌弃可以我的这个文章:<a href="https://blog.csdn.net/wenyingzhi/article/details/80475660" target="_blank" rel="noopener">点击打开链接</a></p>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -886,16 +228,33 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/30/使用OkHttp拦截器,添加统一参数/">展开全文 >></a>
-        </p>
-      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/06/01/关于Rxjava+Retrofit网络请求防止内存泄露/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          关于Rxjava+Retrofit网络请求防止内存泄露
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/28/Retrofit自动定义ConverterFactory/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Retrofit自动定义ConverterFactory</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -915,12 +274,14 @@
 
 
 
+  
+  
+  
 
   
+
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
+
   
 
 
@@ -943,8 +304,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
