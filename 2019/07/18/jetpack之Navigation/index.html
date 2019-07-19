@@ -6,15 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 快乐编码</title>
+  <title>jetpack之Navigation | 快乐编码</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="快乐编码">
-<meta property="og:url" content="http://yoursite.com/archives/page/3/index.html">
+  <meta name="description" content="问题曾经和同事讨论过Activity要不要经常用呢？我个人认为是最好不要经常使用，因为Activity在我的感觉过于沉重，使用一个Activity还需要去清单文件注册，通知系统打开一个Activity至少要经历N次进程通信，不管是效率还是复杂度，都非常麻烦。  不得不说Google也发现了这个问题，所以出现了Fragment，Fragment我的理解其实就是一个类，只不过这个类和Activity的">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jetpack之Navigation">
+<meta property="og:url" content="http://yoursite.com/2019/07/18/jetpack之Navigation/index.html">
 <meta property="og:site_name" content="快乐编码">
+<meta property="og:description" content="问题曾经和同事讨论过Activity要不要经常用呢？我个人认为是最好不要经常使用，因为Activity在我的感觉过于沉重，使用一个Activity还需要去清单文件注册，通知系统打开一个Activity至少要经历N次进程通信，不管是效率还是复杂度，都非常麻烦。  不得不说Google也发现了这个问题，所以出现了Fragment，Fragment我的理解其实就是一个类，只不过这个类和Activity的">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4675/DA1670C6367D4E28BFBB2484BD5D39C4">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4704/843E2114429444DFBEF55309BFBDF998">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4718/905FBBECE34F422E94AA7D6922A68406">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4725/E0DA3155B64841C1BC5B121EDBDD3EB8">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4728/9E42766C72D341BEB99FD256DF7BF8B2">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4753/240617592B004DE39BE10CA9C4D43656">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4775/B99A9AD1ACB64C6BA5AEFBC6CD88B390">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4779/AE67F5CF08964ECB9A4889645C529809">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4786/07B9B926F718425EB24588FD4178D7EA">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4796/5A594BE67F144C56A60DDD499B4EA991">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4821/486054F09C354132837C61EFAD677850">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4831/20E1DD2554924E1B9849A56D47E13DFB">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4838/2624B1DFF4FB44E18CDC128322DCB9C7">
+<meta property="og:image" content="http://note.youdao.com/yws/res/4861/WEBRESOURCEe283d6ab040670bfa8c7f8ad34deb499">
+<meta property="og:updated_time" content="2019-07-19T03:25:23.476Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快乐编码">
+<meta name="twitter:title" content="jetpack之Navigation">
+<meta name="twitter:description" content="问题曾经和同事讨论过Activity要不要经常用呢？我个人认为是最好不要经常使用，因为Activity在我的感觉过于沉重，使用一个Activity还需要去清单文件注册，通知系统打开一个Activity至少要经历N次进程通信，不管是效率还是复杂度，都非常麻烦。  不得不说Google也发现了这个问题，所以出现了Fragment，Fragment我的理解其实就是一个类，只不过这个类和Activity的">
+<meta name="twitter:image" content="http://note.youdao.com/yws/res/4675/DA1670C6367D4E28BFBB2484BD5D39C4">
   
   
     <link rel="icon" href="/favicon.png">
@@ -130,36 +150,131 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-jetpack之Navigation" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      jetpack之Navigation
+    </h1>
+  
+
+        
+        <a href="/2019/07/18/jetpack之Navigation/" class="archive-article-date">
+  	<time datetime="2019-07-18T12:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>曾经和同事讨论过Activity要不要经常用呢？<br>我个人认为是最好不要经常使用，因为Activity在我的感觉过于沉重，使用一个Activity还需要去清单文件注册，通知系统打开一个Activity至少要经历N次进程通信，不管是效率还是复杂度，都非常麻烦。 </p>
+<p>不得不说Google也发现了这个问题，所以出现了Fragment，Fragment我的理解其实就是一个类，只不过这个类和Activity的生命周期绑定了，类似变成了一个有生命周期的对象。    </p>
+<p>如果一个应用，只有一个HomeActivity，其它界面都用Framgnet来写，都通过FragmentManager去管理Fragment，岂不是很轻松，无需注册，无需等待复杂的进程通信，我认为这才是最理想的状态。  </p>
+<p>那问题来了，如何去维护管理这些Framgnet呢？例如返回键退出Framgnet，都需要自己去维护，很复杂。==Navigation==因此诞生</p>
+<a id="more"></a>
+<h2 id="入门"><a href="#入门" class="headerlink" title="入门"></a>入门</h2><h3 id="想看源码可以获取代码"><a href="#想看源码可以获取代码" class="headerlink" title="想看源码可以获取代码"></a>想看源码可以获取代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/googlecodelabs/android-navigation</span><br></pre></td></tr></table></figure>
+<p><strong>导航编辑器是Android Studio 3.3及更高版本的标准部分。如果您使用的是Android Studio 3.2，则导航是一项实验性功能，您需要启用它：</strong></p>
+<ol>
+<li>单击File&gt;Settings（Mac上的Android Studio&gt;Preferences）</li>
+<li>在左窗格中选择“<strong>Experimental</strong>”类别</li>
+<li>选中<strong>Enable Navigation Editor</strong></li>
+<li>重启 Android Studio<br><img src="http://note.youdao.com/yws/res/4675/DA1670C6367D4E28BFBB2484BD5D39C4" alt="image"><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h4 id="依赖库"><a href="#依赖库" class="headerlink" title="依赖库"></a>依赖库</h4></li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">  def nav_version = &quot;2.1.0-beta01&quot;</span><br><span class="line">  def nav_version_ktx = &quot;2.1.0-beta01&quot;</span><br><span class="line"></span><br><span class="line">  // Java</span><br><span class="line">  implementation &quot;androidx.navigation:navigation-fragment:$nav_version&quot;</span><br><span class="line">  implementation &quot;androidx.navigation:navigation-ui:$nav_version&quot;</span><br><span class="line"></span><br><span class="line">  // Kotlin</span><br><span class="line">  implementation &quot;androidx.navigation:navigation-fragment-ktx:$nav_version_ktx&quot;</span><br><span class="line">  implementation &quot;androidx.navigation:navigation-ui-ktx:$nav_version_ktx&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="navigation文件创建"><a href="#navigation文件创建" class="headerlink" title="navigation文件创建"></a>navigation文件创建</h4><ol>
+<li>在项目的res目录创建文件夹<strong>navigation</strong></li>
+<li>右击navigation-&gt;new-&gt;navigation resource file</li>
+<li>创建navigation resource file文件</li>
+</ol>
+<p>就是一个xml文件，这个xml文件配置了，我个人理解：这个xml配置了一个Activity对应需要管理的Framgnet(其实也能打开Activity)，这个xml可以用可视化工具管理，不得不说google，还是挺人性化的<br><img src="http://note.youdao.com/yws/res/4704/843E2114429444DFBEF55309BFBDF998" alt="image"></p>
+<h4 id="创建Activity"><a href="#创建Activity" class="headerlink" title="创建Activity"></a>创建Activity</h4><p>创建LoginAcivity，修改布局文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.constraint.ConstraintLayout</span><br><span class="line">       ....&gt;</span><br><span class="line">    &lt;fragment</span><br><span class="line">            android:id=&quot;@+id/my_nav_host_fragment&quot;</span><br><span class="line">            // 注意这里，一定要对应一个NavHostFragment</span><br><span class="line">            android:name=&quot;androidx.navigation.fragment.NavHostFragment&quot;</span><br><span class="line">            // 刚刚创建的navigation对应的文件</span><br><span class="line">            app:navGraph=&quot;@navigation/login_navigation&quot;</span><br><span class="line">            // 是否统一back键退出</span><br><span class="line">            app:defaultNavHost=&quot;true&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;match_parent&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;/android.support.constraint.ConstraintLayout&gt;</span><br></pre></td></tr></table></figure>
+<p>可以看到一个Activity对应了一个NavHostFragment，NavHostFragment其实也是一个Fragment，他负责切换不同的Fragment（本质他只是展示，管理功能委托给了一个控制器）</p>
+<h4 id="创建管理的Framgnet"><a href="#创建管理的Framgnet" class="headerlink" title="创建管理的Framgnet"></a>创建管理的Framgnet</h4><p><img src="http://note.youdao.com/yws/res/4718/905FBBECE34F422E94AA7D6922A68406" alt="image"></p>
+<h4 id="导航编辑器"><a href="#导航编辑器" class="headerlink" title="导航编辑器"></a>导航编辑器</h4><ol>
+<li>打开 res/navigation/login_navigation.xml  </li>
+<li>单击“ 设计”进入设计模式：<br><img src="http://note.youdao.com/yws/res/4725/E0DA3155B64841C1BC5B121EDBDD3EB8" alt="image">  </li>
+<li>配置管理文件<img src="http://note.youdao.com/yws/res/4728/9E42766C72D341BEB99FD256DF7BF8B2" alt="image"><br>第一次我选择了LoginFragment，看下对应xml文件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;navigation xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">            xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">            xmlns:tools=&quot;http://schemas.android.com/tools&quot; android:id=&quot;@+id/login_navigation&quot;</span><br><span class="line">            // 注意这里startDestination属性，对应的就是这个文件对应根节点的Fragment</span><br><span class="line">            app:startDestination=&quot;@id/loginFragment&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;fragment android:id=&quot;@+id/loginFragment&quot; android:name=&quot;com.qihoo.jectpackdemo.ui.fragment.LoginFragment&quot;</span><br><span class="line">              android:label=&quot;LoginFragment&quot;/&gt;</span><br><span class="line">&lt;/navigation&gt;</span><br></pre></td></tr></table></figure>
+<p>现在总结下：</p>
+<ol>
+<li>我们在LoginActivity中配置了，NavHostFragmet对应的配置文件是res/navigation/login_navigation.xml</li>
+<li>app:startDestination=”@id/loginFragment”告诉这个NavHostFragmet的根Fragment是id为loginFragment的Fragment</li>
+<li>下面配置了id为loginFragment的LoginFragment</li>
+<li>这样启动就应该是LoginFragment展示了</li>
+</ol>
+<h4 id="启动下试试"><a href="#启动下试试" class="headerlink" title="启动下试试"></a>启动下试试</h4><p><img src="http://note.youdao.com/yws/res/4753/240617592B004DE39BE10CA9C4D43656" alt="image"><br>很郁闷！！！，最终查到原因，jetpack只能在AndroidX的包下运行<br><strong>什么是AndroidX呢</strong><br>官方解释：<br>AndroidX是Android团队用于在Jetpack中开发，测试，打包，发布和发布库的开源项目。<br>也就是说项目中要用Jetpack一定要将项目迁移到AndoridX</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">使用Android Studio 3.2及更高版本，您可以通过从菜单栏中选择Refactor&gt; Migrate to AndroidX，快速迁移现有项目以使用AndroidX 。</span><br><span class="line"></span><br><span class="line">如果您有任何尚未迁移到AndroidX名称空间的Maven依赖项，那么当您true在 gradle.properties文件中设置以下两个标志时，Android Studio构建系统也会为您迁移这些依赖项：</span><br><span class="line">android.useAndroidX=true</span><br><span class="line">android.enableJetifier=true</span><br></pre></td></tr></table></figure>
+<p>其实这2个属性，配置后，会自动将我们引入的包，自动更新依赖城Androidx包，你去查看Acitvity，AppCompatActivity的包名，已经变成了androidx开头的了。<br>我不建议这样做，建议依赖正确的包，对应列表官方也给了<br><a href="https://developer.android.google.cn/jetpack/androidx/migrate" target="_blank" rel="noopener">官方迁移过程</a></p>
+<h2 id="将目标添加到导航图"><a href="#将目标添加到导航图" class="headerlink" title="将目标添加到导航图"></a>将目标添加到导航图</h2><ol>
+<li>打开/navigation/mobile_navigation.xml，然后单击“ 设计”选项卡。</li>
+<li>单击“ 新目标”图标，然后选择“settings_fragment”<br><img src="http://note.youdao.com/yws/res/4775/B99A9AD1ACB64C6BA5AEFBC6CD88B390" alt="image"><br>结果是一个新目标，它在设计视图中呈现片段布局的预览。<br><img src="http://note.youdao.com/yws/res/4779/AE67F5CF08964ECB9A4889645C529809" alt="image"><br>请注意，您还可以直接编辑XML文件以添加目标：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;fragment</span><br><span class="line">    android:id=&quot;@+id/settings_dest&quot;</span><br><span class="line">    android:name=&quot;com.example.android.codelabs.navigation.SettingsFragment&quot;</span><br><span class="line">    android:label=&quot;@string/settings&quot;</span><br><span class="line">    tools:layout=&quot;@layout/settings_fragment&quot; /&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="切换Fragment"><a href="#切换Fragment" class="headerlink" title="切换Fragment"></a>切换Fragment</h2><p><img src="http://note.youdao.com/yws/res/4786/07B9B926F718425EB24588FD4178D7EA" alt="image"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? &#123;</span><br><span class="line">        val view = inflater.inflate(R.layout.layout_login, null)</span><br><span class="line">        return view</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    override fun onViewCreated(view: View, savedInstanceState: Bundle?) &#123;</span><br><span class="line">        super.onViewCreated(view, savedInstanceState)</span><br><span class="line">        view.apply &#123;</span><br><span class="line">            findViewById&lt;View&gt;(R.id.register_btn).setOnClickListener &#123;</span><br><span class="line">                // 切换到注册界面 对应id就是在配置文件中生成的Action</span><br><span class="line">               findNavController().navigate(R.id.action_loginFragment_to_registerFragment)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            findViewById&lt;View&gt;(R.id.details_btn).setOnClickListener &#123;</span><br><span class="line">                // 切换到注册登陆界面</span><br><span class="line">                findNavController().navigate(R.id.action_loginFragment_to_detialFragment)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="添加过渡动画"><a href="#添加过渡动画" class="headerlink" title="添加过渡动画"></a>添加过渡动画</h2><h4 id="自定义过渡"><a href="#自定义过渡" class="headerlink" title="自定义过渡"></a>自定义过渡</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">val options = navOptions &#123;</span><br><span class="line">    anim &#123;</span><br><span class="line">        enter = R.anim.slide_in_right</span><br><span class="line">        exit = R.anim.slide_out_left</span><br><span class="line">        popEnter = R.anim.slide_in_left</span><br><span class="line">        popExit = R.anim.slide_out_right</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">view.findViewById&lt;Button&gt;(R.id.navigate_destination_button)?.setOnClickListener &#123;</span><br><span class="line">    findNavController().navigate(R.id.flow_step_one_dest, null, options)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="导航中配置"><a href="#导航中配置" class="headerlink" title="导航中配置"></a>导航中配置</h4><p><img src="http://note.youdao.com/yws/res/4796/5A594BE67F144C56A60DDD499B4EA991" alt="image"></p>
+<h4 id="使用safe-args进行导航"><a href="#使用safe-args进行导航" class="headerlink" title="使用safe args进行导航"></a>使用safe args进行导航</h4><ol>
+<li>依赖插件</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">classpath &quot;androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion&quot;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>使用插件<br>要生成适用于Java或混合Java和Kotlin模块的Java代码，请将此行添加到您的应用程序或模块的 build.gradle文件中：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin ：“androidx.navigation.safeargs”</span><br></pre></td></tr></table></figure>
+<p>或者，要生成适用于仅Kotlin模块的Kotlin代码，请添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply plugin ：“androidx.navigation.safeargs.kotlin”</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>  </p>
+<p>根据<a href="https://developer.android.com/jetpack/androidx/migrate#migrate" target="_blank" rel="noopener">迁移到AndroidX</a>，您必须android.useAndroidX=true在 gradle.properties文件中 。</p>
+<ol start="3">
+<li>使用<br>使用之前build下项目，会生成新的类<br><img src="http://note.youdao.com/yws/res/4821/486054F09C354132837C61EFAD677850" alt="image"></li>
+</ol>
+<p><strong>传递参数：</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">val action = LoginFragmentDirections.actionLoginFragmentToRegisterFragment(&quot;阿文&quot;)</span><br><span class="line">     findNavController().navigate(action)</span><br></pre></td></tr></table></figure>
+<p><strong>接收参数：</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 获取传入的参数</span><br><span class="line">       val args: RegisterFragmentArgs by navArgs()</span><br><span class="line">       val name = args.name</span><br><span class="line">       log(&quot;收到数据：$&#123;name&#125;&quot;)</span><br></pre></td></tr></table></figure>
+<p><strong>注意这里有一个坑：</strong><br>我一开始Navigation版本使用的是<br><strong>ext.navigationVersion = “2.1.0-beta01”</strong><br>但是就是报错：<br><img src="http://note.youdao.com/yws/res/4831/20E1DD2554924E1B9849A56D47E13DFB" alt="image"><br>原因分析：应该是是inline方法，编译的有问题。inline方法是会插入到对应的方法中，不同jvm target版本编译的class不能tonget通用，我把版本换成了<br>ext.navigationVersion = “2.0.0”<br>就没问题了<br>网上的解决方案没解决掉：<br><img src="http://note.youdao.com/yws/res/4838/2624B1DFF4FB44E18CDC128322DCB9C7" alt="image"></p>
+<h2 id="使用菜单，抽屉和底部导航进行导航"><a href="#使用菜单，抽屉和底部导航进行导航" class="headerlink" title="使用菜单，抽屉和底部导航进行导航"></a>使用菜单，抽屉和底部导航进行导航</h2><h4 id="底部导航"><a href="#底部导航" class="headerlink" title="底部导航"></a>底部导航</h4><p>修改Activity布局文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;androidx.constraintlayout.widget.ConstraintLayout</span><br><span class="line">        xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">        xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">        xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line">        tools:context=&quot;.ui.actvity.LoginActivity&quot;&gt;</span><br><span class="line">    &lt;fragment</span><br><span class="line">            android:id=&quot;@+id/my_nav_host_fragment&quot;</span><br><span class="line">            android:name=&quot;androidx.navigation.fragment.NavHostFragment&quot;</span><br><span class="line">            app:navGraph=&quot;@navigation/login_navigation&quot;</span><br><span class="line">            app:defaultNavHost=&quot;true&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;match_parent&quot;/&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &lt;com.google.android.material.bottomnavigation.BottomNavigationView</span><br><span class="line">            android:id=&quot;@+id/bottom_nav_view&quot;</span><br><span class="line">            app:layout_constraintBottom_toBottomOf=&quot;parent&quot;</span><br><span class="line">            android:layout_width=&quot;match_parent&quot;</span><br><span class="line">            android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">            app:menu=&quot;@menu/menu_main&quot; /&gt;</span><br><span class="line"></span><br><span class="line">&lt;/androidx.constraintlayout.widget.ConstraintLayout&gt;</span><br></pre></td></tr></table></figure></p>
+<p>主要配置的是这个menu_main文件<br><strong>这里特别注意下，每个菜单的id一定要和Navigation的配置xml对应Fragment的Id对应相同，比如主页对应的id是loginFramgnt</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span><br><span class="line">&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;</span><br><span class="line">	&lt;item</span><br><span class="line">		android:id=&quot;@+id/loginFragment&quot;</span><br><span class="line">		android:icon=&quot;@drawable/main_ic_market&quot;</span><br><span class="line">		android:title=&quot;主页&quot;/&gt;</span><br><span class="line">	&lt;item</span><br><span class="line">		android:id=&quot;@+id/myFragment&quot;</span><br><span class="line">		android:icon=&quot;@drawable/main_ic_me&quot;</span><br><span class="line">		android:title=&quot;我&quot;/&gt;</span><br><span class="line">&lt;/menu&gt;</span><br></pre></td></tr></table></figure></p>
+<p>Navigation配置注意点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;navigation xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">            xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;</span><br><span class="line">            xmlns:tools=&quot;http://schemas.android.com/tools&quot; android:id=&quot;@+id/login_navigation&quot;</span><br><span class="line">            app:startDestination=&quot;@id/loginFragment&quot;&gt;</span><br><span class="line">    // 注意这里要和menu的id相同</span><br><span class="line">    &lt;fragment android:id=&quot;@+id/loginFragment&quot; android:name=&quot;com.qihoo.jectpackdemo.ui.fragment.LoginFragment&quot;</span><br><span class="line">              tools:layout=&quot;@layout/layout_login&quot;</span><br><span class="line">              android:label=&quot;LoginFragment&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;action android:id=&quot;@+id/action_loginFragment_to_registerFragment&quot; app:destination=&quot;@id/registerFragment&quot;</span><br><span class="line">                app:enterAnim=&quot;@anim/nav_default_enter_anim&quot; app:exitAnim=&quot;@anim/nav_default_exit_anim&quot;</span><br><span class="line">                app:popEnterAnim=&quot;@anim/nav_default_pop_enter_anim&quot; app:popExitAnim=&quot;@anim/nav_default_pop_exit_anim&quot;/&gt;</span><br><span class="line"></span><br><span class="line">        &lt;action android:id=&quot;@+id/action_loginFragment_to_detialFragment&quot; app:destination=&quot;@id/detialFragment&quot;/&gt;</span><br><span class="line">    &lt;/fragment&gt;</span><br><span class="line">&lt;/navigation&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>最后只需要将BottomNavigationView的控制权交个navController即可</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">private fun initView() &#123;</span><br><span class="line">    val navHostFragment = supportFragmentManager.findFragmentById(R.id.my_nav_host_fragment) as NavHostFragment</span><br><span class="line">    navHostFragment.navController.apply &#123;</span><br><span class="line">        bottomNavigationView.setupWithNavController(this)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://note.youdao.com/yws/res/4861/WEBRESOURCEe283d6ab040670bfa8c7f8ad34deb499" alt="image"><br>总结：<br>其实最重要的就是menu的配置的id一定要和Navigation的配置xml的fragment的id相同</p>
+<h4 id="配置菜单"><a href="#配置菜单" class="headerlink" title="配置菜单"></a>配置菜单</h4><p>其实和上门的差不多，就是讲控制权交给NavController，这里可以通过findNavController直接获取控制器，而上面的是通过NavHostFragment获取的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">override fun onCreateOptionsMenu(menu: Menu?): Boolean &#123;</span><br><span class="line">    return menu.onNavDestinationSelected(findNavController(R.id.my_nav_host_fragment))</span><br><span class="line">            || super.onOptionsItemSelected(menu)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="抽屉菜单（侧滑菜单）"><a href="#抽屉菜单（侧滑菜单）" class="headerlink" title="抽屉菜单（侧滑菜单）"></a>抽屉菜单（侧滑菜单）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">private fun setupNavigationMenu(navController: NavController) &#123;</span><br><span class="line">    val sideNavView = findViewById&lt;NavigationView&gt;(R.id.nav_view)</span><br><span class="line">    // 这句是关键</span><br><span class="line">    sideNavView?.setupWithNavController(navController)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/30/使用OkHttp拦截器,添加统一参数/" class="archive-article-date">
-  	<time datetime="2018-05-30T08:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/30/使用OkHttp拦截器,添加统一参数/">使用OkHttp拦截器,添加统一参数</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -171,326 +286,54 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/28/Retrofit自动定义ConverterFactory/" class="archive-article-date">
-  	<time datetime="2018-05-28T05:24:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-28</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/04/19/2019-4-19小米面试总结/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">小米面试总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/28/Retrofit自动定义ConverterFactory/">Retrofit自动定义ConverterFactory</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/05/23/javapoet动态生成java代码/" class="archive-article-date">
-  	<time datetime="2018-05-23T02:28:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/05/23/javapoet动态生成java代码/">javapoet动态生成java代码</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/25/Dagger2之应用篇（Dagger2+RxJava+Retrofit+OkHttp+MVP）-第7章/" class="archive-article-date">
-  	<time datetime="2018-04-25T07:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/25/Dagger2之应用篇（Dagger2+RxJava+Retrofit+OkHttp+MVP）-第7章/">Dagger2之应用篇（Dagger2+RxJava+Retrofit+OkHttp+MVP）-第7章</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/21/Dagger2之Singleton单利--第五章/" class="archive-article-date">
-  	<time datetime="2018-04-21T10:13:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/21/Dagger2之Singleton单利--第五章/">Dagger2之Singleton单利--第五章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/19/Dagger2之Named--第四章/" class="archive-article-date">
-  	<time datetime="2018-04-19T10:15:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/19/Dagger2之Named--第四章/">Dagger2之Named--第四章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/19/Dagger2模块化讲解--第三章/" class="archive-article-date">
-  	<time datetime="2018-04-19T09:14:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/19/Dagger2模块化讲解--第三章/">Dagger2模块化讲解--第三章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/18/Dagger2基本整体使用讲解--第二章/" class="archive-article-date">
-  	<time datetime="2018-04-18T10:34:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/18/Dagger2基本整体使用讲解--第二章/">Dagger2基本整体使用讲解--第二章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/07/Dagger2集成丶简单实用--第一章/" class="archive-article-date">
-  	<time datetime="2018-04-07T07:11:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/07/Dagger2集成丶简单实用--第一章/">Dagger2集成丶简单实用--第一章</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/2/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span>
-    </nav>
   
 
 
@@ -514,8 +357,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

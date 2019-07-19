@@ -132,6 +132,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jetpack之Navigation" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/18/jetpack之Navigation/">jetpack之Navigation</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/18/jetpack之Navigation/" class="archive-article-date">
+  	<time datetime="2019-07-18T12:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>曾经和同事讨论过Activity要不要经常用呢？<br>我个人认为是最好不要经常使用，因为Activity在我的感觉过于沉重，使用一个Activity还需要去清单文件注册，通知系统打开一个Activity至少要经历N次进程通信，不管是效率还是复杂度，都非常麻烦。 </p>
+<p>不得不说Google也发现了这个问题，所以出现了Fragment，Fragment我的理解其实就是一个类，只不过这个类和Activity的生命周期绑定了，类似变成了一个有生命周期的对象。    </p>
+<p>如果一个应用，只有一个HomeActivity，其它界面都用Framgnet来写，都通过FragmentManager去管理Fragment，岂不是很轻松，无需注册，无需等待复杂的进程通信，我认为这才是最理想的状态。  </p>
+<p>那问题来了，如何去维护管理这些Framgnet呢？例如返回键退出Framgnet，都需要自己去维护，很复杂。==Navigation==因此诞生</p>
+        
+          <a class="article-more-a" href="/2019/07/18/jetpack之Navigation/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/18/jetpack之Navigation/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-2019-4-19小米面试总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -808,85 +887,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/09/26/MMKV-组件-快速丶读丶查丶写的sp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-jenkins打包之集成360自动加固(5)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/02/jenkins打包之集成360自动加固(5)/">jenkins打包之集成360自动加固(5)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/07/02/jenkins打包之集成360自动加固(5)/" class="archive-article-date">
-  	<time datetime="2018-07-02T07:22:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>实现jenkins打包完成360加固</p>
-<p>1:下载360加固软件:<a href="http://jiagu.360.cn/#/global/help/164" target="_blank" rel="noopener">下载地址</a></p>
-<p>2:添加是否加固参数,如下图</p>
-<p><img src="https://img-blog.csdn.net/20180702151321587?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlbnlpbmd6aGk=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="img"><img src="data:image/gif;base64,R0lGODlhAQABAPABAP///wAAACH5BAEKAAAALAAAAAABAAEAAAICRAEAOw==" alt="点击并拖拽以移动"></p>
-        
-          <a class="article-more-a" href="/2018/07/02/jenkins打包之集成360自动加固(5)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/07/02/jenkins打包之集成360自动加固(5)/">展开全文 >></a>
         </p>
       
 
