@@ -132,6 +132,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-关于Rxjava+Retrofit网络请求防止内存泄露" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/06/01/关于Rxjava+Retrofit网络请求防止内存泄露/">关于Rxjava+Retrofit网络请求防止内存泄露</a>
+    </h1>
+  
+
+        
+        <a href="/2018/06/01/关于Rxjava+Retrofit网络请求防止内存泄露/" class="archive-article-date">
+  	<time datetime="2018-06-01T03:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-06-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>简介</p>
+<p>不知道大家有没有碰到这个问题,在一个Activcity正在加载数据,网络请求还未完毕,此时用户将Activity关闭了,这时候就造成了内存泄露(为啥泄露自己想),Activity并没有被释放的,这时候网络请求完了,回调了请求成功方法,填充view就开始报null异常了…,不知道大家有没有遇到这个问题?在以前网络请求发起是很难取消掉的,我们是在onSuccess回调加了判断Activity是否被销毁掉,在进行填充view</p>
+        
+          <a class="article-more-a" href="/2018/06/01/关于Rxjava+Retrofit网络请求防止内存泄露/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/06/01/关于Rxjava+Retrofit网络请求防止内存泄露/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-使用OkHttp拦截器,添加统一参数" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
