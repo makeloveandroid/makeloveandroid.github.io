@@ -6,15 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | 快乐编码</title>
+  <title>jetpack-LiveData&amp;ViewModel学习 | 快乐编码</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="快乐编码">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="LiveData简介LiveData一个具有生命周期的对象。他可以和Activity的生命生命周期绑定，可以监听对象的数据变化。 LiveData的优势 可监听数据的变化 没有内存泄露：LiveData绑定Lifecycle（AndroidX的Activity和Fragment都实现了Lifecycle）对象，并在其相关生命周期被破坏后自行清理。 没有因停止活动而崩溃:当界面失去焦点或销毁，此时异">
+<meta name="keywords" content="笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jetpack-LiveData&amp;ViewModel学习">
+<meta property="og:url" content="http://yoursite.com/2019/07/25/jetpack-LiveData&ViewModel学习/index.html">
 <meta property="og:site_name" content="快乐编码">
+<meta property="og:description" content="LiveData简介LiveData一个具有生命周期的对象。他可以和Activity的生命生命周期绑定，可以监听对象的数据变化。 LiveData的优势 可监听数据的变化 没有内存泄露：LiveData绑定Lifecycle（AndroidX的Activity和Fragment都实现了Lifecycle）对象，并在其相关生命周期被破坏后自行清理。 没有因停止活动而崩溃:当界面失去焦点或销毁，此时异">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190724161621738.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlbnlpbmd6aGk=,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-07-25T03:10:32.722Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快乐编码">
+<meta name="twitter:title" content="jetpack-LiveData&amp;ViewModel学习">
+<meta name="twitter:description" content="LiveData简介LiveData一个具有生命周期的对象。他可以和Activity的生命生命周期绑定，可以监听对象的数据变化。 LiveData的优势 可监听数据的变化 没有内存泄露：LiveData绑定Lifecycle（AndroidX的Activity和Fragment都实现了Lifecycle）对象，并在其相关生命周期被破坏后自行清理。 没有因停止活动而崩溃:当界面失去焦点或销毁，此时异">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190724161621738.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlbnlpbmd6aGk=,size_16,color_FFFFFF,t_70">
   
   
     <link rel="icon" href="/favicon.png">
@@ -130,274 +137,112 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-jetpack-LiveData&amp;ViewModel学习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      jetpack-LiveData&amp;ViewModel学习
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/25/jetpack-LiveData&ViewModel学习/" class="archive-article-date">
+
+        
+        <a href="/2019/07/25/jetpack-LiveData&ViewModel学习/" class="archive-article-date">
   	<time datetime="2019-07-25T03:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/25/jetpack-LiveData&ViewModel学习/">jetpack-LiveData&amp;ViewModel学习</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+        
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/22/jetpack-DataBinding学习/" class="archive-article-date">
-  	<time datetime="2019-07-22T06:56:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/22/jetpack-DataBinding学习/">jetpack-DataBinding学习</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/07/18/jetpack之Navigation/" class="archive-article-date">
-  	<time datetime="2019-07-18T12:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/07/18/jetpack之Navigation/">jetpack之Navigation</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/04/19/2019-4-19小米面试总结/" class="archive-article-date">
-  	<time datetime="2019-04-19T06:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/04/19/2019-4-19小米面试总结/">小米面试总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/03/14/V2多渠道打包分析丶工具开发/" class="archive-article-date">
-  	<time datetime="2019-03-14T02:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/03/14/V2多渠道打包分析丶工具开发/">V1丶V2多渠道打包工具开发</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/02/14/微信发送自定义语音/" class="archive-article-date">
-  	<time datetime="2019-02-14T02:36:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/02/14/微信发送自定义语音/">微信发送自定义语音</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+    <div class="article-entry" itemprop="articleBody">
       
-        </div></section>
+        <h2 id="LiveData简介"><a href="#LiveData简介" class="headerlink" title="LiveData简介"></a>LiveData简介</h2><p>LiveData一个具有生命周期的对象。他可以和Activity的生命生命周期绑定，可以监听对象的数据变化。</p>
+<h2 id="LiveData的优势"><a href="#LiveData的优势" class="headerlink" title="LiveData的优势"></a>LiveData的优势</h2><ol>
+<li><code>可监听数据的变化</code></li>
+<li><code>没有内存泄露：</code>LiveData绑定Lifecycle（AndroidX的Activity和Fragment都实现了Lifecycle）对象，并在其相关生命周期被破坏后自行清理。</li>
+<li><code>没有因停止活动而崩溃:</code>当界面失去焦点或销毁，此时异步网络请求回调完成。LiveData不必回调观察者</li>
+<li><code>始终保持最新数据:</code>这个要和第2条有关系，例如异步网络请求，返回数据设置给LiveData。在网络请求期间，界面切换到了后台，此时注册的LiveData观察值，并不会回调，当界面恢复到活动状态，立刻收到回调。</li>
+<li><code>可以和Data Binding一起使用:</code>这里有个坑，Data Binding Compiler V1编译器，是不支持的LiveData配合使用的（只可以使用ObservableField来实现双绑定）。Data Binding Compiler V2后面已经支持和LiveData双向绑定功能<a id="more"></a>
+<h2 id="LiveData使用"><a href="#LiveData使用" class="headerlink" title="LiveData使用"></a>LiveData使用</h2><h4 id="自定义LiveData对象"><a href="#自定义LiveData对象" class="headerlink" title="自定义LiveData对象"></a>自定义LiveData对象</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class StockLiveData(symbol: String) : LiveData&lt;String&gt;() &#123;</span><br><span class="line">    init &#123;</span><br><span class="line">        <span class="comment">// 设置默认值 这个value是LiveData的参数，记录他的值</span></span><br><span class="line">        value = symbol</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">override fun <span class="title">onActive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 绑定生命周期</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">override fun <span class="title">onInactive</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 结束回调，也就是Activity或Fragment调用了onDestroy</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注册LiveData数据观察者，可以发现observe传了一个this，这个this是实现了LifecycleOwner接口<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// this 是一个Activity</span></span><br><span class="line">  StockLiveData(<span class="string">"value"</span>).observe(<span class="keyword">this</span>) &#123;</span><br><span class="line">           Log.d(<span class="string">"wyz"</span>,<span class="string">"收到修改的值：$it"</span>)</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="如何修改LiveData的值呢？"><a href="#如何修改LiveData的值呢？" class="headerlink" title="如何修改LiveData的值呢？"></a>如何修改LiveData的值呢？</h4><ul>
+<li>直接调用LiveData的<code>setValue</code>方法，但是这个方法是通过<code>protected</code>修饰，最好暴露一个修改方法。（注意<code>setValue</code>方法必须在主线程调用，不然会报错，具体原因）</li>
+<li>上面说了<code>setValue</code>只能在主线程调用，那如果在子线程呢？LiveData已经帮们想好了<code>postValue</code>方法</li>
+</ul>
+<h2 id="LiveData的子类"><a href="#LiveData的子类" class="headerlink" title="LiveData的子类"></a>LiveData的子类</h2><p>LiveData的<code>setValue</code>和<code>postValue</code>方法，没有完全暴露出来，每次还要写暴露方法，是不是很麻烦。可以使用提供的子类。</p>
+<h4 id="MutableLiveData"><a href="#MutableLiveData" class="headerlink" title="MutableLiveData"></a>MutableLiveData</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val title: MutableLiveData&lt;String&gt; by lazy &#123;</span><br><span class="line">    MutableLiveData&lt;String&gt;(<span class="string">"默认标题"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="MediatorLiveData"><a href="#MediatorLiveData" class="headerlink" title="MediatorLiveData"></a>MediatorLiveData</h4><p>MediatorLiveData是MutableLiveData子类，他和MutableLiveData的区别在于，他内部维护了个Map，他可以将多了个LiveData的合并在一起。举个例子：</p>
+<blockquote>
+<p>考虑以下情形：我们有两个实例LiveData，让他们的名字 liveData1和liveData2，我们希望合并其排放量一个对象： mediatorLiveData。然后，liveData1并且liveData2将成为它的源，MediatorLiveData mediatorLiveData并且每次onChanged为它们中的任何一个调用回调时，我们在其中设置新值mediatorLiveData。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">val liveData1 = MutableLiveData&lt;String&gt;()</span><br><span class="line">val liveData2 = MutableLiveData&lt;String&gt;()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建mediatorLiveData</span></span><br><span class="line">val mediatorLiveData = MediatorLiveData&lt;String&gt;()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> fun <span class="title">testLiveData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 做关联1</span></span><br><span class="line">    mediatorLiveData.addSource(liveData1) &#123;</span><br><span class="line">        mediatorLiveData.value = it</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 做关联2</span></span><br><span class="line">    mediatorLiveData.addSource(liveData2) &#123;</span><br><span class="line">        mediatorLiveData.value = it</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    mediatorLiveData.observe(<span class="keyword">this</span>) &#123;</span><br><span class="line">        <span class="comment">// 这样不管是liveData1和liveData2数据发生改变，都会调用mediatorLiveData的数据改变</span></span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>还有一种用途，例如上面的我只想liveData1数据改变10次后，就不在通知mediatorLiveData数据改变了，要怎么写呢？</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mediatorLiveData.addSource(liveData1, object : Observer&lt;String&gt; &#123;</span><br><span class="line">            <span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line">            <span class="function">override fun <span class="title">onChanged</span><span class="params">(t: String?)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (count++&gt;<span class="number">10</span>)&#123;</span><br><span class="line">                    mediatorLiveData.removeSource(liveData1)</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    mediatorLiveData.value = t</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="LiveData操作符"><a href="#LiveData操作符" class="headerlink" title="LiveData操作符"></a>LiveData操作符</h2><h4 id="map操作符"><a href="#map操作符" class="headerlink" title="map操作符"></a>map操作符</h4><p>和RxJava的map操作符原理一样<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数据做转化，mutableLiveData收到数据，转化成其他数据</span></span><br><span class="line">     Transformations.map(mutableLiveData) &#123; value: String -&gt;</span><br><span class="line">         <span class="comment">// 不可以延迟操作，因为本质还在一条流水线上</span></span><br><span class="line">         value.toInt()</span><br><span class="line">     &#125;.observe(<span class="keyword">this</span>, Observer &#123;</span><br><span class="line">         log(<span class="string">"收到map转化:$it"</span>)</span><br><span class="line">     &#125;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="switchMap"><a href="#switchMap" class="headerlink" title="switchMap"></a>switchMap</h4><p>对比RxJava的faltMap操作符<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// switchMap转化</span></span><br><span class="line">       Transformations.switchMap(mutableLiveData) &#123;</span><br><span class="line">           val temp: MutableLiveData&lt;String&gt; = MutableLiveData()</span><br><span class="line">           <span class="comment">// 可以做延迟操作</span></span><br><span class="line">           Thread(Runnable &#123;</span><br><span class="line">               Thread.sleep(<span class="number">4000</span>)</span><br><span class="line">               temp.postValue(<span class="string">"121"</span>)</span><br><span class="line">           &#125;).start()</span><br><span class="line">           temp</span><br><span class="line">       &#125;.observe(<span class="keyword">this</span>) &#123;</span><br><span class="line">           log(<span class="string">"收到数据变换了：$it"</span>)</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>不知道大家又没和我和一样，刚学RxJava的时候map操作和flatMap操作符，傻傻分不清楚呢？<br>其实很容易理解：<br>map操作符好比一个饼干加工流水线，这个流水线，将圆形的饼干加工成方形的流水线，然后饼干就加工完成了。这就是map操作符。<br>flatMap操作符，相当于流水线1加工好的饼干，给了流水线2，流水线1完成任务。此时流水的的加工过程和流水线1就没有关系了，只和流水线2有关系了。<br>再简单粗暴点理解，flatMap可以返回另外一个Observable，这个Observable多久弹射数据和原先的Observable没任何关系了，还不懂？看下面的例子。</p>
+</blockquote>
+<h4 id="操作符项目的应用"><a href="#操作符项目的应用" class="headerlink" title="操作符项目的应用"></a>操作符项目的应用</h4><blockquote>
+<p>项目场景：例如：有一个ID值，只要这个ID变化，便会请求数据。要怎么处理呢？</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">class MyViewModel() : ViewModel() &#123;</span><br><span class="line">   。。。。。</span><br><span class="line">    <span class="comment">// 监听id变化</span></span><br><span class="line">    val id: MutableLiveData&lt;Int&gt; = MutableLiveData()</span><br><span class="line">    <span class="comment">// 接受变换的数据的LiveData</span></span><br><span class="line">    <span class="keyword">var</span> result: LiveData&lt;List&lt;MyData&gt;&gt;</span><br><span class="line">    init &#123;</span><br><span class="line">        <span class="comment">// 通过switchMap转换</span></span><br><span class="line">        result = Transformations.switchMap(id) &#123;</span><br><span class="line">            <span class="comment">// 模拟延迟加载数据</span></span><br><span class="line">            val liveData = MutableLiveData&lt;List&lt;MyData&gt;&gt;()</span><br><span class="line">            Thread &#123;</span><br><span class="line">                SystemClock.sleep(<span class="number">5000</span>)</span><br><span class="line">                val datas = ArrayList&lt;MyData&gt;()</span><br><span class="line">                <span class="keyword">for</span> (i in <span class="number">1</span>..<span class="number">100</span>) &#123;</span><br><span class="line">                    datas.add(MyData(<span class="string">"awen$i"</span>))</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//得到数据，将数据发送</span></span><br><span class="line">                liveData.postValue(datas)</span><br><span class="line">            &#125;.start()</span><br><span class="line">            liveData</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 代码中只需注册result的监听</span></span><br><span class="line"> myViewModel.result.observe(<span class="keyword">this</span>, Observer &#123;</span><br><span class="line">            log(<span class="string">"收到数据:刷新"</span>)</span><br><span class="line">            myViewModel.notify(it)</span><br><span class="line">        &#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 直接修改id的值就可以了</span></span><br><span class="line"> myViewModel.id.value = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h2 id="ViewModel简介"><a href="#ViewModel简介" class="headerlink" title="ViewModel简介"></a>ViewModel简介</h2><blockquote>
+<p>ViewModel数据MVVM的vm层。他的生命周期比较特殊（后面会说）。我们只需要把业务逻辑，都放在这层。<code>永远记住一句话ViewModel驱动View变换</code>，完美方案就是View收到控制，得到数据-&gt;调用ViewModel的业务逻辑-&gt;ViewModel获取返回数据-&gt;将数据设置给LiveData-&gt;数据发生改变，界面发生变化</p>
+</blockquote>
+<h4 id="ViewModel的生命周期"><a href="#ViewModel的生命周期" class="headerlink" title="ViewModel的生命周期"></a>ViewModel的生命周期</h4><p><img src="https://img-blog.csdnimg.cn/20190724161621738.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlbnlpbmd6aGk=,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<blockquote>
+<p>从生命周期可以发现，当Activity的旋转屏幕，重新被创建的时候。<code>ViewModel</code>不会被重新创建</p>
+</blockquote>
+<h4 id="ViewModel的用途"><a href="#ViewModel的用途" class="headerlink" title="ViewModel的用途"></a>ViewModel的用途</h4><p>说实话ViewModel提供的功能不是很多，但是它在MVVM设置中占据了很重要的责任，我觉得有点像MVP的P层。总之记住一句话<code>ViewModel驱动View变化</code><br>总结下我知道作用：</p>
+<ol>
+<li>更长的生命周期，屏幕旋转，ViewModel不会重新创建（原理看源码）</li>
+<li><p>Fragment之间的数据共享，构建ViewModel的时候需要用<code>ViewModelProviders.of()</code>，需要传入Activity或者Fragment，如果一个Activity的FragmentManager管理的多个Fragment，这些Frarment的ViewModel是共享的，<code>前提是ViewModelProviders.of()传入的是同一个Acticity对象</code></p>
+<blockquote>
+<p>MasterFragment 和 DetailFragment都属于一个Activity，此时<code>ViewModelProviders.of(this)[SharedViewModel::class.java]</code>返回的对象是同一个ViewModel（注意代码中this代表的是谁，具体原理开源，一下就出来了）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">class SharedViewModel : ViewModel() &#123;</span><br><span class="line">    val selected = MutableLiveData&lt;Item&gt;()</span><br><span class="line"></span><br><span class="line">    <span class="function">fun <span class="title">select</span><span class="params">(item: Item)</span> </span>&#123;</span><br><span class="line">        selected.value = item</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class MasterFragment : Fragment() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> lateinit <span class="keyword">var</span> itemSelector: Selector</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> lateinit <span class="keyword">var</span> model: SharedViewModel</span><br><span class="line"></span><br><span class="line">    <span class="function">override fun <span class="title">onCreate</span><span class="params">(savedInstanceState: Bundle?)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        model = activity?.run &#123;</span><br><span class="line">        	<span class="comment">// 注意这里的this是Activity</span></span><br><span class="line">            ViewModelProviders.of(this)[SharedViewModel::class.java]</span><br><span class="line">        &#125; ?: <span class="keyword">throw</span> Exception(<span class="string">"Invalid Activity"</span>)</span><br><span class="line">        itemSelector.setOnClickListener &#123; item -&gt;</span><br><span class="line">            <span class="comment">// Update the UI</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class DetailFragment : Fragment() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> lateinit <span class="keyword">var</span> model: SharedViewModel</span><br><span class="line"></span><br><span class="line">    <span class="function">override fun <span class="title">onCreate</span><span class="params">(savedInstanceState: Bundle?)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">super</span>.onCreate(savedInstanceState)</span><br><span class="line">        model = activity?.run &#123;</span><br><span class="line">        	<span class="comment">// 注意这里的this是Activity</span></span><br><span class="line">            ViewModelProviders.of(this)[SharedViewModel::class.java]</span><br><span class="line">        &#125; ?: <span class="keyword">throw</span> Exception(<span class="string">"Invalid Activity"</span>)</span><br><span class="line">        model.selected.observe(<span class="keyword">this</span>, Observer&lt;Item&gt; &#123; item -&gt;</span><br><span class="line">            <span class="comment">// Update the UI</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>可以配合LiveData于Data Binding搭配使用（下面会说）</p>
+</li>
+</ol>
+<h2 id="LiveData和Data-Binding"><a href="#LiveData和Data-Binding" class="headerlink" title="LiveData和Data Binding"></a>LiveData和Data Binding</h2><h4 id="Data-Binding和LiveData的兼容问题"><a href="#Data-Binding和LiveData的兼容问题" class="headerlink" title="Data Binding和LiveData的兼容问题"></a>Data Binding和LiveData的兼容问题</h4><p>如果使用的3.2已上的Android Studio，可以无视这个问题，LiveData已经兼容Data Binding</p>
+<p>注意：如果要使用LiveData于Data Binding需要对应生成的binding对象设置下<code>LifecycleOwner</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">binding.setLifecycleOwner(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://tangpj.com/2018/05/12/data_binding_compiler_v2_1/" target="_blank" rel="noopener">偷个懒看别人的吧</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/14/AspectJ之this和target的区别（四）/" class="archive-article-date">
-  	<time datetime="2018-11-14T08:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/14/AspectJ之this和target的区别（四）/">AspectJ之this和target的区别（四）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -409,136 +254,54 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/12/AspectJ自定义注解之埋点（三）/" class="archive-article-date">
-  	<time datetime="2018-11-12T07:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/22/jetpack-DataBinding学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jetpack-DataBinding学习</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/12/AspectJ自定义注解之埋点（三）/">AspectJ自定义注解之埋点（三）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/12/AspectJ自定义注解之埋点（二）/" class="archive-article-date">
-  	<time datetime="2018-11-12T06:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/12/AspectJ自定义注解之埋点（二）/">AspectJ自定义注解之埋点（二）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/11/AspectJ介绍(一)/" class="archive-article-date">
-  	<time datetime="2018-11-11T06:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/11/AspectJ介绍(一)/">AspectJ介绍(一)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -562,8 +325,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

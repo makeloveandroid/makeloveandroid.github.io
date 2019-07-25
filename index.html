@@ -132,6 +132,88 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jetpack-LiveData&amp;ViewModel学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/25/jetpack-LiveData&ViewModel学习/">jetpack-LiveData&amp;ViewModel学习</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/25/jetpack-LiveData&ViewModel学习/" class="archive-article-date">
+  	<time datetime="2019-07-25T03:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="LiveData简介"><a href="#LiveData简介" class="headerlink" title="LiveData简介"></a>LiveData简介</h2><p>LiveData一个具有生命周期的对象。他可以和Activity的生命生命周期绑定，可以监听对象的数据变化。</p>
+<h2 id="LiveData的优势"><a href="#LiveData的优势" class="headerlink" title="LiveData的优势"></a>LiveData的优势</h2><ol>
+<li><code>可监听数据的变化</code></li>
+<li><code>没有内存泄露：</code>LiveData绑定Lifecycle（AndroidX的Activity和Fragment都实现了Lifecycle）对象，并在其相关生命周期被破坏后自行清理。</li>
+<li><code>没有因停止活动而崩溃:</code>当界面失去焦点或销毁，此时异步网络请求回调完成。LiveData不必回调观察者</li>
+<li><code>始终保持最新数据:</code>这个要和第2条有关系，例如异步网络请求，返回数据设置给LiveData。在网络请求期间，界面切换到了后台，此时注册的LiveData观察值，并不会回调，当界面恢复到活动状态，立刻收到回调。</li>
+<li><code>可以和Data Binding一起使用:</code>这里有个坑，Data Binding Compiler V1编译器，是不支持的LiveData配合使用的（只可以使用ObservableField来实现双绑定）。Data Binding Compiler V2后面已经支持和LiveData双向绑定功能
+        
+          <a class="article-more-a" href="/2019/07/25/jetpack-LiveData&ViewModel学习/#more">more >></a>
+        
+      
+
+      
+    </li></ol></div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/25/jetpack-LiveData&ViewModel学习/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-jetpack-DataBinding学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -843,85 +925,9 @@
 
 
   
-    <article id="post-打造升级GsonFormat驼峰命名规则" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/09/28/打造升级GsonFormat驼峰命名规则/">GsonFomat自动驼峰命名</a>
-    </h1>
-  
-
-        
-        <a href="/2018/09/28/打造升级GsonFormat驼峰命名规则/" class="archive-article-date">
-  	<time datetime="2018-09-28T11:16:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="前景"><a href="#前景" class="headerlink" title="前景"></a>前景</h3><p>​        今天高高高兴兴的敲代码,龙飞凤舞,张牙舞爪,帅的一B,创建presenter,modle,view一起合成,复制返回数据,解析json数据,打开GsonFomat-&gt;粘贴-&gt;OK,帅的一B, 一气合成我都佩服自己,来看看结果</p>
-        
-          <a class="article-more-a" href="/2018/09/28/打造升级GsonFormat驼峰命名规则/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/09/28/打造升级GsonFormat驼峰命名规则/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
