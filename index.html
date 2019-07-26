@@ -132,6 +132,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-kotlin之好用的Delegates实现双击back退出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/26/kotlin之好用的Delegates实现双击back退出/">kotlin之好用的Delegates实现双击back退出</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/26/kotlin之好用的Delegates实现双击back退出/" class="archive-article-date">
+  	<time datetime="2019-07-26T09:57:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>说Delegates之前，首先必须了解下kotlin的<code>委托机制</code>，这个委托机制还是很不错的，可以将一个对象的构造和设置值，都给委托给其它</p>
+<h2 id="委托机制"><a href="#委托机制" class="headerlink" title="委托机制"></a>委托机制</h2><p>关键词<code>by</code>，是不是很眼熟，这不是我们经常用过的<code>by lazy{}</code>    ,没错懒加载就是用委托实现的</p>
+<h4 id="自定义委托"><a href="#自定义委托" class="headerlink" title="自定义委托"></a>自定义委托</h4><p>考大家一个问题<code>val</code>和<code>var</code>有啥区别吗？<code>val</code>是不可变的变量，必须要在初始化化的时候赋值。<code>var</code>是可变的变量。有没有考虑过为啥呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 其实每个变量都有一个隐藏的方法，如果是val变量修饰，只有get方法</span></span><br><span class="line">    val name: String = <span class="string">""</span></span><br><span class="line">        get() &#123;</span><br><span class="line">           <span class="keyword">return</span> field</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// var 有get方法和set方法，当你给name2进行赋值的时候，set方法就会调用</span></span><br><span class="line">    <span class="keyword">var</span> name2: String = <span class="string">""</span></span><br><span class="line">        get() &#123;</span><br><span class="line">         <span class="keyword">return</span> field</span><br><span class="line">        &#125;</span><br><span class="line">        set(value) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/07/26/kotlin之好用的Delegates实现双击back退出/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kotlin</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/26/kotlin之好用的Delegates实现双击back退出/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-jetpack-LiveData&amp;ViewModel学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -849,82 +928,6 @@
 
 
   
-    <article id="post-AspectJ介绍(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/11/AspectJ介绍(一)/">AspectJ介绍(一)</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/11/AspectJ介绍(一)/" class="archive-article-date">
-  	<time datetime="2018-11-11T06:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="AOP概念"><a href="#AOP概念" class="headerlink" title="AOP概念"></a>AOP概念</h2><p>AOP是Aspect Oriented Programming的缩写，即『面向切面编程』。它和我们平时接触到的OOP都是编程的不同思想，OOP，即『面向对象编程』，它提倡的是将功能模块化，对象化，而AOP的思想，则不太一样，它提倡的是针对同一类问题的统一处理，当然，我们在实际编程过程中，不可能单纯的安装AOP或者OOP的思想来编程，很多时候，可能会混合多种编程思想，大家也不必要纠结该使用哪种思想，取百家之长，才是正道</p>
-        
-          <a class="article-more-a" href="/2018/11/11/AspectJ介绍(一)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/11/AspectJ介绍(一)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1023,6 +1026,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">kotlin</a>
               </li>
             
             <div class="clearfix"></div>

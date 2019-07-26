@@ -6,15 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2018/11 | 快乐编码</title>
+  <title>kotlin之好用的Delegates实现双击back退出 | 快乐编码</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="快乐编码">
-<meta property="og:url" content="http://yoursite.com/archives/2018/11/index.html">
+  <meta name="description" content="简介说Delegates之前，首先必须了解下kotlin的委托机制，这个委托机制还是很不错的，可以将一个对象的构造和设置值，都给委托给其它 委托机制关键词by，是不是很眼熟，这不是我们经常用过的by lazy{}    ,没错懒加载就是用委托实现的 自定义委托考大家一个问题val和var有啥区别吗？val是不可变的变量，必须要在初始化化的时候赋值。var是可变的变量。有没有考虑过为啥呢？ 1234">
+<meta name="keywords" content="kotlin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kotlin之好用的Delegates实现双击back退出">
+<meta property="og:url" content="http://yoursite.com/2019/07/26/kotlin之好用的Delegates实现双击back退出/index.html">
 <meta property="og:site_name" content="快乐编码">
+<meta property="og:description" content="简介说Delegates之前，首先必须了解下kotlin的委托机制，这个委托机制还是很不错的，可以将一个对象的构造和设置值，都给委托给其它 委托机制关键词by，是不是很眼熟，这不是我们经常用过的by lazy{}    ,没错懒加载就是用委托实现的 自定义委托考大家一个问题val和var有啥区别吗？val是不可变的变量，必须要在初始化化的时候赋值。var是可变的变量。有没有考虑过为啥呢？ 1234">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-07-26T09:57:45.098Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="快乐编码">
+<meta name="twitter:title" content="kotlin之好用的Delegates实现双击back退出">
+<meta name="twitter:description" content="简介说Delegates之前，首先必须了解下kotlin的委托机制，这个委托机制还是很不错的，可以将一个对象的构造和设置值，都给委托给其它 委托机制关键词by，是不是很眼熟，这不是我们经常用过的by lazy{}    ,没错懒加载就是用委托实现的 自定义委托考大家一个问题val和var有啥区别吗？val是不可变的变量，必须要在初始化化的时候赋值。var是可变的变量。有没有考虑过为啥呢？ 1234">
   
   
     <link rel="icon" href="/favicon.png">
@@ -130,174 +135,135 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-kotlin之好用的Delegates实现双击back退出" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      kotlin之好用的Delegates实现双击back退出
+    </h1>
+  
+
+        
+        <a href="/2019/07/26/kotlin之好用的Delegates实现双击back退出/" class="archive-article-date">
+  	<time datetime="2019-07-26T09:57:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-26</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>说Delegates之前，首先必须了解下kotlin的<code>委托机制</code>，这个委托机制还是很不错的，可以将一个对象的构造和设置值，都给委托给其它</p>
+<h2 id="委托机制"><a href="#委托机制" class="headerlink" title="委托机制"></a>委托机制</h2><p>关键词<code>by</code>，是不是很眼熟，这不是我们经常用过的<code>by lazy{}</code>    ,没错懒加载就是用委托实现的</p>
+<h4 id="自定义委托"><a href="#自定义委托" class="headerlink" title="自定义委托"></a>自定义委托</h4><p>考大家一个问题<code>val</code>和<code>var</code>有啥区别吗？<code>val</code>是不可变的变量，必须要在初始化化的时候赋值。<code>var</code>是可变的变量。有没有考虑过为啥呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 其实每个变量都有一个隐藏的方法，如果是val变量修饰，只有get方法</span></span><br><span class="line">    val name: String = <span class="string">""</span></span><br><span class="line">        get() &#123;</span><br><span class="line">           <span class="keyword">return</span> field</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// var 有get方法和set方法，当你给name2进行赋值的时候，set方法就会调用</span></span><br><span class="line">    <span class="keyword">var</span> name2: String = <span class="string">""</span></span><br><span class="line">        get() &#123;</span><br><span class="line">         <span class="keyword">return</span> field</span><br><span class="line">        &#125;</span><br><span class="line">        set(value) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+ <a id="more"></a>
+<p>来尝试来一个定义一个委托：</p>
+<blockquote>
+<p>这里描述下，我现在是<code>val</code>定义变量，只需要<code>ReadOnlyProperty</code>(只需要要委托getValue方法)，我定义了一个<code>value</code>变量记录值（初始化内容123），当使用这个变量的读取这个值的时候，就会调用我的委托方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">    val name: String by object : ReadOnlyProperty&lt;Any?, String&gt; &#123;</span><br><span class="line">        <span class="keyword">var</span> value: String = <span class="string">"123"</span></span><br><span class="line">        <span class="function">override fun <span class="title">getValue</span><span class="params">(thisRef: Any?, property: KProperty&lt;*&gt;)</span>: String </span>&#123;</span><br><span class="line">            println(<span class="string">"取这个[$&#123;property.name&#125;]属性赋值:$value"</span>)</span><br><span class="line">            <span class="comment">// 返回这个记录值</span></span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="comment">// 同理var的委托定义，如果我这样写，当使用这个变量的读取这个值的时候，就会调用我的委托方法。当我设置值的时候就会调用我的set方法，会传入一个value方法。</span></span><br><span class="line"><span class="keyword">var</span> name2: String by object : ReadWriteProperty&lt;Any?, String&gt; &#123;</span><br><span class="line">        <span class="keyword">var</span> value: String = <span class="string">"123"</span></span><br><span class="line">        <span class="function">override fun <span class="title">getValue</span><span class="params">(thisRef: Any?, property: KProperty&lt;*&gt;)</span>: String </span>&#123;</span><br><span class="line">            println(<span class="string">"取这个[$&#123;property.name&#125;]属性赋值:$value"</span>)</span><br><span class="line">            <span class="comment">// 返回这个记录值</span></span><br><span class="line">            <span class="keyword">return</span> value</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function">override fun <span class="title">setValue</span><span class="params">(thisRef: Any?, property: KProperty&lt;*&gt;, value: String)</span> </span>&#123;</span><br><span class="line">            println(<span class="string">"为这个[$&#123;property.name&#125;]属性赋值:$value"</span>)</span><br><span class="line">            <span class="comment">// 记录下当前这个值</span></span><br><span class="line">            <span class="keyword">this</span>.value = <span class="string">"我是从新构造:$value"</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p><code>这里有必要说下 thisRef 是个什么鬼？就是这个变量对应在那个对象中</code></p>
+<h4 id="曲线救国委托实现多继承"><a href="#曲线救国委托实现多继承" class="headerlink" title="曲线救国委托实现多继承"></a>曲线救国委托实现多继承</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function">fun <span class="title">call</span><span class="params">()</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function">class <span class="title">B</span><span class="params">()</span> : A </span>&#123;</span><br><span class="line">    <span class="function">override fun <span class="title">call</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        println(<span class="string">"我调用call了"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">open class <span class="title">D</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">fun <span class="title">core</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        println(<span class="string">"我调用core了"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class C() : D(), A by B()&#123;</span><br><span class="line">    <span class="function">fun <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// todo 我可以直接掉call 变向多继承(这个在协程的  协程上下文与调度器(5)--协程作用域(重点) 有用到)</span></span><br><span class="line">        call()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Delegates"><a href="#Delegates" class="headerlink" title="Delegates"></a>Delegates</h2><h4 id="Delegates-notNull"><a href="#Delegates-notNull" class="headerlink" title="Delegates.notNull"></a>Delegates.notNull</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">// 使用很简单</span></span><br><span class="line"> val name:String by Delegates.notNull&lt;String&gt;()</span><br><span class="line"> <span class="comment">// 源码分析</span></span><br><span class="line">  <span class="comment">// 第一句没啥的看下，NotNullVar</span></span><br><span class="line">  <span class="keyword">public</span> fun &lt;T : Any&gt; notNull(): ReadWriteProperty&lt;Any?, T&gt; = NotNullVar()</span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 是不是看出来了，在取值的时候，如果是null就会抛异常</span></span><br><span class="line">  private class NotNullVar&lt;T : Any&gt;() : ReadWriteProperty&lt;Any?, T&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> value: T? = <span class="keyword">null</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> override fun <span class="title">getValue</span><span class="params">(thisRef: Any?, property: KProperty&lt;*&gt;)</span>: T </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value ?: <span class="keyword">throw</span> IllegalStateException(<span class="string">"Property $&#123;property.name&#125; should be initialized before get."</span>)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> override fun <span class="title">setValue</span><span class="params">(thisRef: Any?, property: KProperty&lt;*&gt;, value: T)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value = value</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Delegates-observable"><a href="#Delegates-observable" class="headerlink" title="Delegates.observable"></a>Delegates.observable</h4><p>大家记住这个，用它可以完成双击back退出<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val name: String by Delegates.observable(<span class="string">"初始化值"</span>) &#123; pre, old, <span class="keyword">new</span> -&gt;</span><br><span class="line">       log(<span class="string">"以前的值$old 新设置的值$new"</span>)</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>看下源码：<br>ObservableProperty是关键，主要看委托的getValue方法和setValue方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这里没啥好说的，主要看下 ObservableProperty对象</span></span><br><span class="line">  <span class="keyword">public</span> inline fun &lt;T&gt; observable(initialValue: T, crossinline onChange: (property: KProperty&lt;*&gt;, oldValue: T, newValue: T) -&gt; Unit):</span><br><span class="line">           ReadWriteProperty&lt;Any?, T&gt; =</span><br><span class="line">       object : ObservableProperty&lt;T&gt;(initialValue) &#123;</span><br><span class="line">       	<span class="comment">// 注意这里重写了afterChange方法</span></span><br><span class="line">       	<span class="comment">// 这里是调用onChange方法，就是我们传入的lambda表达式</span></span><br><span class="line">           <span class="function">override fun <span class="title">afterChange</span><span class="params">(property: KProperty&lt;*&gt;, oldValue: T, newValue: T)</span> </span>= onChange(property, oldValue, newValue)</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public abstract class ObservableProperty&lt;T&gt;(initialValue: T) : ReadWriteProperty&lt;Any?, T&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> value = initialValue</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> open fun <span class="title">beforeChange</span><span class="params">(property: KProperty&lt;*&gt;, oldValue: T, newValue: T)</span>: Boolean </span>= <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> open fun <span class="title">afterChange</span><span class="params">(property: KProperty&lt;*&gt;, oldValue: T, newValue: T)</span>: Unit </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> override fun <span class="title">getValue</span><span class="params">(thisRef: Any?, property: KProperty&lt;*&gt;)</span>: T </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 主要是这里，</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> override fun <span class="title">setValue</span><span class="params">(thisRef: Any?, property: KProperty&lt;*&gt;, value: T)</span> </span>&#123;</span><br><span class="line">    	<span class="comment">// 记录上一次的值</span></span><br><span class="line">        val oldValue = <span class="keyword">this</span>.value</span><br><span class="line">        <span class="comment">// beforeChange默认返回true，先不管</span></span><br><span class="line">        <span class="keyword">if</span> (!beforeChange(property, oldValue, value)) &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 为this.value设置新的值，为getValue做准备</span></span><br><span class="line">        <span class="keyword">this</span>.value = value</span><br><span class="line">        <span class="comment">// 调用afterChange方法，被重写了，所以会调用到onChange，是不是很简单</span></span><br><span class="line">        afterChange(property, oldValue, value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Delegates-vetoable"><a href="#Delegates-vetoable" class="headerlink" title="Delegates.vetoable"></a>Delegates.vetoable</h4><p>这个能在设置值的时候，加逻辑判断，如果不满足便不更新值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">val name: String by Delegates.vetoable(<span class="string">"初始化值"</span>) &#123; pre, old, <span class="keyword">new</span> -&gt;</span><br><span class="line">    <span class="comment">// 如果设置的新值是a开头的就设置新值，返回ture就修改，false就不修改</span></span><br><span class="line">    <span class="keyword">new</span>.startsWith(<span class="string">"a"</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>源码分析：<br>其实这里和<code>observable</code>差不多，但是注意重写的是<code>beforeChange</code>方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> inline fun &lt;T&gt; vetoable(initialValue: T, crossinline onChange: (property: KProperty&lt;*&gt;, oldValue: T, newValue: T) -&gt; Boolean):</span><br><span class="line">        ReadWriteProperty&lt;Any?, T&gt; =</span><br><span class="line">    object : ObservableProperty&lt;T&gt;(initialValue) &#123;</span><br><span class="line">    	<span class="comment">// 注意这里重写的是beforeChange方法</span></span><br><span class="line">        <span class="function">override fun <span class="title">beforeChange</span><span class="params">(property: KProperty&lt;*&gt;, oldValue: T, newValue: T)</span>: Boolean </span>= onChange(property, oldValue, newValue)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>接下来就和以前差不多了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">public abstract class ObservableProperty&lt;T&gt;(initialValue: T) : ReadWriteProperty&lt;Any?, T&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">var</span> value = initialValue</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> open fun <span class="title">beforeChange</span><span class="params">(property: KProperty&lt;*&gt;, oldValue: T, newValue: T)</span>: Boolean </span>= <span class="keyword">true</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> open fun <span class="title">afterChange</span><span class="params">(property: KProperty&lt;*&gt;, oldValue: T, newValue: T)</span>: Unit </span>&#123;&#125;</span><br><span class="line">	</span><br><span class="line">    <span class="function"><span class="keyword">public</span> override fun <span class="title">getValue</span><span class="params">(thisRef: Any?, property: KProperty&lt;*&gt;)</span>: T </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> value</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 主要是这里，</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> override fun <span class="title">setValue</span><span class="params">(thisRef: Any?, property: KProperty&lt;*&gt;, value: T)</span> </span>&#123;</span><br><span class="line">    	<span class="comment">// 记录上一次的值</span></span><br><span class="line">        val oldValue = <span class="keyword">this</span>.value</span><br><span class="line">        <span class="comment">// 主要看这里</span></span><br><span class="line">        <span class="comment">// beforeChange写了，如果我们的lamabda表达式返回的ture就不会return，就会调用后面的赋值方法</span></span><br><span class="line">        <span class="keyword">if</span> (!beforeChange(property, oldValue, value)) &#123;</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 为this.value设置新的值，为getValue做准备</span></span><br><span class="line">        <span class="keyword">this</span>.value = value</span><br><span class="line">        <span class="comment">// 调用afterChange方法，被重写了，所以会调用到onChange，是不是很简单</span></span><br><span class="line">        afterChange(property, oldValue, value)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="实践完成双击back退出"><a href="#实践完成双击back退出" class="headerlink" title="实践完成双击back退出"></a>实践完成双击back退出</h2><p>其实很简单，就是使用observable的特性<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">private</span> <span class="keyword">var</span> backPressedTime by Delegates.observable(<span class="number">0L</span>) &#123; pre, old, <span class="keyword">new</span> -&gt;</span><br><span class="line">       <span class="comment">// 2次的时间间隔小于2秒就退出了</span></span><br><span class="line">       <span class="keyword">if</span> (<span class="keyword">new</span> - old &lt; <span class="number">2000</span>) &#123;</span><br><span class="line">           finish()</span><br><span class="line">       &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">           drawerLayout?.snack(<span class="string">"再按返回鍵退出"</span>)</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从新写back方法</span></span><br><span class="line">  <span class="function">override fun <span class="title">onBackPressed</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  		<span class="comment">// 直接赋值就可以啦，是不是很简单呀</span></span><br><span class="line">       backPressedTime = System.currentTimeMillis()</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/14/AspectJ之this和target的区别（四）/" class="archive-article-date">
-  	<time datetime="2018-11-14T08:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/14/AspectJ之this和target的区别（四）/">AspectJ之this和target的区别（四）</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">kotlin</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/12/AspectJ自定义注解之埋点（三）/" class="archive-article-date">
-  	<time datetime="2018-11-12T07:12:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/25/jetpack-LiveData&ViewModel学习/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">jetpack-LiveData&amp;ViewModel学习</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/12/AspectJ自定义注解之埋点（三）/">AspectJ自定义注解之埋点（三）</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/12/AspectJ自定义注解之埋点（二）/" class="archive-article-date">
-  	<time datetime="2018-11-12T06:37:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/12/AspectJ自定义注解之埋点（二）/">AspectJ自定义注解之埋点（二）</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/11/AspectJ介绍(一)/" class="archive-article-date">
-  	<time datetime="2018-11-11T06:17:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/11/AspectJ介绍(一)/">AspectJ介绍(一)</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">笔记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -320,8 +286,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
